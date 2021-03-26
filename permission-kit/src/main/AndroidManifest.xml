@@ -1,0 +1,14 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.permission.kit">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application>
+        <activity
+            android:name=".PermissionUtil$PermissionActivity"
+            android:autoRemoveFromRecents="true"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale|screenLayout|smallestScreenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/PermissionActivity"></activity>
+    </application>
+</manifest>
