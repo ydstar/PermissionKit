@@ -16,26 +16,23 @@ dependencies {
 ```
 代码请求权限
 ```java
-        PermissionUtil.permission(PermissionConstants.CAMERA)
-            .callback(object : PermissionUtil.SimpleCallback {
-                override fun onGranted() {
-                    showToast("获取相机权限成功")
-                }
-                override fun onDenied() {
-                    showToast("你拒绝使用相机权限,扫码功能无法继续使用.")
-                }
-            })
-            //如果被永远拒绝了,弹框解释为什么申请权限的回调
-            .rationale(object : PermissionUtil.OnRationaleListener {
-                override fun rationale(shouldRequest: PermissionUtil.OnRationaleListener.ShouldRequest?) {
-                    //弹框解释,然后调整到设置页面
-                    showTipDialog()
-                }
-            })
-            .request()
+PermissionUtil
+      .permission(PermissionConstants.CAMERA)
+      .callback(object : PermissionUtil.SimpleCallback {
+           override fun onGranted() {
+                showToast("获取相机权限成功")
+           }
+           override fun onDenied() {
+                showToast("你拒绝使用相机权限,扫码功能无法继续使用.")
+           }
+      })
+      //如果被永远拒绝了,弹框解释为什么申请权限的回调
+      .rationale(object : PermissionUtil.OnRationaleListener {
+           override fun rationale(shouldRequest: PermissionUtil.OnRationaleListener.ShouldRequest?) {
+               //弹框解释,然后调整到设置页面
+      })
+      .request()
 ```
-
-
 
 ## License
 ```text
