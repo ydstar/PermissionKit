@@ -17,7 +17,7 @@ YdKit 是一组功能丰富的 Android 通用组件。
 仅支持`AndroidX`
 ```
 dependencies {
-     implementation 'com.android.ydkit:permission-kit:1.0.0'
+     implementation 'com.android.ydkit:permission-kit:1.0.1'
 }
 ```
 
@@ -28,9 +28,9 @@ dependencies {
 ```
 代码请求权限
 ```java
-PermissionUtil
+PermissionKit
       .permission(PermissionConstants.CAMERA)
-      .callback(object : PermissionUtil.SimpleCallback {
+      .callback(object : PermissionKit.SimpleCallback {
            override fun onGranted() {
                 showToast("获取相机权限成功")
            }
@@ -39,8 +39,8 @@ PermissionUtil
            }
       })
       //如果被永远拒绝了,弹框解释为什么申请权限的回调
-      .rationale(object : PermissionUtil.OnRationaleListener {
-           override fun rationale(shouldRequest: PermissionUtil.OnRationaleListener.ShouldRequest?) {
+      .rationale(object : PermissionKit.OnRationaleListener {
+           override fun rationale(shouldRequest: PermissionKit.OnRationaleListener.ShouldRequest?) {
                //弹框解释,然后调整到设置页面
       })
       .request()
