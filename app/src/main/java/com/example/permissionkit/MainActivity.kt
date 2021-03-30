@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.permission.kit.PermissionConstants
-import com.permission.kit.PermissionUtil
+import com.permission.kit.PermissionKit
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun requestBtnPermissions() {
-        PermissionUtil.permission(PermissionConstants.CAMERA)
-            .callback(object : PermissionUtil.SimpleCallback {
+        PermissionKit.permission(PermissionConstants.CAMERA)
+            .callback(object : PermissionKit.SimpleCallback {
                 override fun onGranted() {
                     showToast("获取相机权限成功")
                 }
@@ -34,8 +34,8 @@ class MainActivity : AppCompatActivity() {
                 }
             })
             //如果被永远拒绝了 ，弹框解释为什么申请权限的回调
-            .rationale(object : PermissionUtil.OnRationaleListener {
-                override fun rationale(shouldRequest: PermissionUtil.OnRationaleListener.ShouldRequest?) {
+            .rationale(object : PermissionKit.OnRationaleListener {
+                override fun rationale(shouldRequest: PermissionKit.OnRationaleListener.ShouldRequest?) {
                     //弹框解释,然后调整到设置页面
                     showTipDialog()
                 }
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         builder.setPositiveButton("去设置", { dialog, which ->
             dialog.dismiss()
             //去设置页面设置权限
-            PermissionUtil.launchAppDetailsSettings()
+            PermissionKit.launchAppDetailsSettings()
         })
 
         builder.setNegativeButton("不同意", { dialog, which ->

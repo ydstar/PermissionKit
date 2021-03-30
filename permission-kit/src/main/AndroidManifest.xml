@@ -5,7 +5,7 @@
 
     <application>
         <activity
-            android:name=".PermissionUtil$PermissionActivity"
+            android:name=".PermissionKit$PermissionActivity"
             android:autoRemoveFromRecents="true"
             android:configChanges="keyboardHidden|orientation|screenSize|locale|screenLayout|smallestScreenSize"
             android:screenOrientation="portrait"

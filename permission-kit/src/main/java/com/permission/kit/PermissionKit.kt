@@ -24,7 +24,7 @@ import java.util.*
  * Email: hydznsqk@163.com
  * Des:权限治理工具类
  */
-class PermissionUtil private constructor(vararg permissions: String) {
+class PermissionKit private constructor(vararg permissions: String) {
     private var mOnRationaleListener: OnRationaleListener? = null
     private var mSimpleCallback: SimpleCallback? = null
     private var mFullCallback: FullCallback? = null
@@ -53,7 +53,7 @@ class PermissionUtil private constructor(vararg permissions: String) {
     /**
      * 简单回调，只会告诉你已授权 还是未授权，不区分那个权限
      */
-    fun callback(callback: SimpleCallback?): PermissionUtil {
+    fun callback(callback: SimpleCallback?): PermissionKit {
         mSimpleCallback = callback
         return this
     }
@@ -61,7 +61,7 @@ class PermissionUtil private constructor(vararg permissions: String) {
     /**
      * 这个会回调 那些已授权，那些未授权，跟上面那个SimpleCallback看场景使用
      */
-    fun callback(callback: FullCallback?): PermissionUtil {
+    fun callback(callback: FullCallback?): PermissionKit {
         mFullCallback = callback
         return this
     }
@@ -69,7 +69,7 @@ class PermissionUtil private constructor(vararg permissions: String) {
     /**
      * 如果被永远拒绝了,弹框解释为什么申请权限的回调
      */
-    fun rationale(listener: OnRationaleListener?): PermissionUtil {
+    fun rationale(listener: OnRationaleListener?): PermissionKit {
         mOnRationaleListener = listener
         return this
     }
@@ -196,7 +196,7 @@ class PermissionUtil private constructor(vararg permissions: String) {
             )
             if (byteExtra == TYPE_RUNTIME) {
                 if (sInstance == null) {
-                    Log.e("PermissionUtil", "request permissions failed")
+                    Log.e("PermissionKit", "request permissions failed")
                     finish()
                     return
                 }
@@ -301,7 +301,7 @@ class PermissionUtil private constructor(vararg permissions: String) {
 
 
     companion object {
-        private var sInstance: PermissionUtil? = null
+        private var sInstance: PermissionKit? = null
         private val sApplication = AppGlobals.get()!!
         private val MANIFEST_PERMISSIONS = getPermissions(sApplication.packageName)
 
@@ -375,8 +375,8 @@ class PermissionUtil private constructor(vararg permissions: String) {
         /**
          * 设置需要请求的权限数组
          */
-        fun permission(vararg permissions: String): PermissionUtil {
-            return PermissionUtil(*permissions)
+        fun permission(vararg permissions: String): PermissionKit {
+            return PermissionKit(*permissions)
         }
 
         /**
